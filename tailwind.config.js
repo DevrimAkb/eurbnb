@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        'btn': 'var(--btn-clr)',
+        'logo': '#FC4646'
       },
     },
   },

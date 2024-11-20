@@ -5,6 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 import { db } from '@/firebase/firebaseConfig';
 import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore';
 import ListingCard from '../components/listingCard';
+import Navbar from '../components/navbar';
 
 
 const Favorites = () => {
@@ -46,6 +47,8 @@ const Favorites = () => {
     if (!user) return <p>Please sign in to view your favorites.</p>;
 
     return (
+      <>
+      <Navbar />
         <div>
             <h1>Favoriter</h1>
             <div style={gridStyles}>
@@ -63,6 +66,7 @@ const Favorites = () => {
                 ))}
             </div>
         </div>
+      </>
     );
 };
 

@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/firebase/firebaseConfig';
 import { useRouter } from 'next/navigation';
+import Navbar from '@/app/components/navbar';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -23,6 +25,8 @@ const Login = () => {
     };
 
     return (
+      <>
+      <Navbar />
         <form className="text-black" onSubmit={handleLogin}>
             <input
                 type="email"
@@ -40,6 +44,7 @@ const Login = () => {
             />
             <button className="bg-white" type="submit">Login</button>
         </form>
+        </>
     );
 };
 

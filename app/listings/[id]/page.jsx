@@ -6,6 +6,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/firebase/firebaseConfig';
 import { useParams, useRouter } from 'next/navigation';
 import BookCard from '../_components/bookCard';
+import Navbar from '@/app/components/navbar';
 
 const ListingDetails = () => {
     const { id } = useParams();
@@ -30,6 +31,8 @@ const ListingDetails = () => {
     if (!listing) return <p>Loading...</p>;
 
     return (
+      <>
+      <Navbar />
         <div className="flex justify-center">
             <div className="flex flex-col relative top-20 w-3/5">
                 <div className="flex justify-between items-center">
@@ -61,6 +64,7 @@ const ListingDetails = () => {
 
             </div>
         </div>
+        </>
     );
 };
 

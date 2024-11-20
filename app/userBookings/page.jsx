@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { db } from '@/firebase/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
+import Navbar from '../components/navbar';
 
 const UserBookings = () => {
     const { user } = useAuth();
@@ -56,7 +57,8 @@ const UserBookings = () => {
     if (!user) return <p>Please sign in to view your booking history.</p>;
 
     return (
-
+      <>
+      <Navbar />
       <div className="booking-history">
       <h2 className="text-4xl text-center mt-10">Bokningshistorik</h2>
       {bookings.length === 0 ? (
@@ -104,6 +106,7 @@ const UserBookings = () => {
           </ul>
       )}
   </div>
+  </>
     );
 };
 

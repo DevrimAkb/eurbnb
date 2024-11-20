@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { auth, db } from '@/firebase/firebaseConfig';
+import Navbar from '@/app/components/navbar';
 
 const Signup = () => {
     const [email, setEmail] = useState('');
@@ -33,6 +34,8 @@ const Signup = () => {
     };
 
     return (
+      <>
+      <Navbar />
         <form className="text-black" onSubmit={handleSignup}>
             <input
                 type="text"
@@ -64,6 +67,7 @@ const Signup = () => {
             />
             <button className="bg-white" type="submit">Sign Up</button>
         </form>
+        </>
     );
 };
 

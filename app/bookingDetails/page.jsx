@@ -6,6 +6,7 @@ import { db } from '@/firebase/firebaseConfig';
 import { doc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { useAuth } from '@/app/hooks/authContext';
 import { differenceInDays } from 'date-fns';
+import Navbar from '../components/navbar';
 
 const BookingDetails = () => {
     const { user } = useAuth();
@@ -95,6 +96,8 @@ const BookingDetails = () => {
     };
 
     return (
+      <>
+      <Navbar />
         <div className="booking-details">
           <h1 className="text-3xl text-center mt-12 mb-20">Skicka bokingsförfrågan</h1>
 
@@ -205,6 +208,7 @@ const BookingDetails = () => {
                 <button type="submit" className="bg-btn text-white w-2/4 p-4 mt-4 rounded-md">Reservera och betala</button>
             </form>
         </div>
+        </>
     );
 };
 

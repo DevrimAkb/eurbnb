@@ -2,11 +2,14 @@
 
 import { useRouter } from 'next/navigation'
 import React from 'react'
+import Navbar from '../components/navbar'
 
 const BookingConfirmation = () => {
     const router = useRouter()
 
   return (
+    <>
+    <Navbar />
     <div className="flex flex-col justify-center items-center h-screen">
       <img src="/success.png" alt="Booking Successful" className="w-1/2 h-auto" />
       <div className="flex gap-4">
@@ -14,6 +17,7 @@ const BookingConfirmation = () => {
         <button onClick={() => router.push('/userBookings')} className="bg-btn p-4 rounded-md text-white">Mina bokningar</button>
       </div>
     </div>
+    </>
   )
 }
 

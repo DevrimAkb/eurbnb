@@ -98,116 +98,143 @@ const BookingDetails = () => {
     return (
       <>
       <Navbar />
-        <div className="booking-details">
-          <h1 className="text-3xl text-center mt-12 mb-20">Skicka bokingsförfrågan</h1>
 
-            {listing && (
-                <div className="listing-card border border-slate-400 rounded-md p-4 mb-4 w-2/5 m-auto flex">
-                    <img src={listing.images[0]} alt={listing.title} className="w-1/3 h-auto object-cover mr-4" />
-                    <div className="flex-1 text-sm">
-                        <h3 className="font-bold">{listing.title}</h3>
-                        <p>Sovrum: {listing.bedrooms} Sängar: {listing.beds}</p>
-                        <p className="font-bold">Datum</p>
-                        <div className="flex justify-between">
-                            <p>{startDate} - {endDate}</p>
-                            <p>{numberOfGuests} Gäster</p>
-                        </div>
-                        <div className="flex justify-between mt-2">
-                            <p>Städavgift:</p>
-                            <p>{cleaningFee} kr</p>
-                        </div>
-                        <div className="flex justify-between">
-                            <p>eurbnb service avgift:</p>
-                            <p>{serviceFee} kr</p>
-                                  </div>
-                        <div className="flex justify-between mt-2">
-                            <p>Antal dagar:</p>
-                            <p>{differenceInDays(new Date(endDate), new Date(startDate))} dagar</p>
-                        </div>
-                        <div className="flex justify-between mt-2 font-bold">
-                            <p>Totalt :</p>
-                            <p>{listing.price} kr</p>
-                        </div>
-                    </div>
+      <div className="booking-details">
+    <h1 className="text-3xl text-center mt-12 mb-20">Skicka bokingsförfrågan</h1>
+
+    {listing && (
+        <div className="listing-card border border-slate-400 rounded-md p-4 mb-4 w-full sm:w-4/5 md:w-2/5 m-auto flex flex-col sm:flex-row">
+            <img src={listing.images[0]} alt={listing.title} className="w-full sm:w-1/3 h-auto object-cover mr-0 sm:mr-4 mb-4 sm:mb-0" />
+            <div className="flex-1 text-sm">
+                <h3 className="font-bold">{listing.title}</h3>
+                <p>Sovrum: {listing.bedrooms} Sängar: {listing.beds}</p>
+                <p className="font-bold">Datum</p>
+                <div className="flex justify-between">
+                    <p>{startDate} - {endDate}</p>
+                    <p>{numberOfGuests} Gäster</p>
                 </div>
-            )}
-            <form action="" className="flex flex-col justify-center items-center border-4 w-2/5 mx-auto" onSubmit={handleBooking}>
-
-                <div className="flex w-full space-x-4">
-                    <label className="flex-1">
-                        <input
-                            className="border p-2 border-slate-700 rounded w-full"
-                            placeholder='Förnamn'
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
-                    </label>
-                    <label className="flex-1">
-                        <input
-                            className="border p-2 border-slate-700 rounded w-full"
-                            placeholder='Efternamn'
-                            type="text"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
-                    </label>
+                <div className="flex justify-between mt-2">
+                    <p>Städavgift:</p>
+                    <p>{cleaningFee} kr</p>
                 </div>
-
-                <label className="w-full mt-4">
-                    <input
-                        className="border p-2 border-slate-700 rounded w-full"
-                        placeholder='Address'
-                        type="text"
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                    />
-                </label>
-
-                <div className="flex w-full space-x-4 mt-4">
-                    <label className="flex-1">
-                        <input
-                            className="border p-2 border-slate-700 rounded w-full"
-                            placeholder='Postnummer'
-                            type="text"
-                            value={postalCode}
-                            onChange={(e) => setPostalCode(e.target.value)}
-                        />
-                    </label>
-                    <label className="flex-1">
-                        <input
-                            className="border p-2 border-slate-700 rounded w-full"
-                            placeholder='Ort'
-                            type="text"
-                            value={area}
-                            onChange={(e) => setArea(e.target.value)}
-                        />
-                    </label>
+                <div className="flex justify-between">
+                    <p>eurbnb service avgift:</p>
+                    <p>{serviceFee} kr</p>
                 </div>
-
-                <label className="w-full mt-4">
-                    <input
-                        className="border p-2 border-slate-700 rounded w-full"
-                        placeholder='Email'
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </label>
-
-                <label className="w-full mt-4">
-                    <input
-                        className="border p-2 border-slate-700 rounded w-full"
-                        placeholder='Telefonnummer'
-                        type="text"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                    />
-                </label>
-
-                <button type="submit" className="bg-btn text-white w-2/4 p-4 mt-4 rounded-md">Reservera och betala</button>
-            </form>
+                <div className="flex justify-between mt-2">
+                    <p>Antal dagar:</p>
+                    <p>{differenceInDays(new Date(endDate), new Date(startDate))} dagar</p>
+                </div>
+                <div className="flex justify-between mt-2 font-bold">
+                    <p>Totalt :</p>
+                    <p>{listing.price} kr</p>
+                </div>
+            </div>
         </div>
+    )}
+    <form action="" className="flex flex-col justify-center items-center border-4 w-full sm:w-4/5 md:w-2/5 mx-auto p-4" onSubmit={handleBooking}>
+        <h2 className="mt-4 text-3xl text-center mb-5">Dina uppgifter</h2>
+        <div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4">
+            <label className="flex-1">
+                <input
+                    className="border p-2 border-slate-700 rounded w-full"
+                    placeholder='Förnamn'
+                    type="text"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
+                />
+            </label>
+            <label className="flex-1">
+                <input
+                    className="border p-2 border-slate-700 rounded w-full"
+                    placeholder='Efternamn'
+                    type="text"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                />
+            </label>
+        </div>
+
+        <label className="w-full mt-4">
+            <input
+                className="border p-2 border-slate-700 rounded w-full"
+                placeholder='Address'
+                type="text"
+                value={address}
+                onChange={(e) => setAddress(e.target.value)}
+            />
+        </label>
+
+        <div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4 mt-4">
+            <label className="flex-1">
+                <input
+                    className="border p-2 border-slate-700 rounded w-full"
+                    placeholder='Postnummer'
+                    type="text"
+                    value={postalCode}
+                    onChange={(e) => setPostalCode(e.target.value)}
+                />
+            </label>
+            <label className="flex-1">
+                <input
+                    className="border p-2 border-slate-700 rounded w-full"
+                    placeholder='Ort'
+                    type="text"
+                    value={area}
+                    onChange={(e) => setArea(e.target.value)}
+                />
+            </label>
+        </div>
+
+        <label className="w-full mt-4">
+            <input
+                className="border p-2 border-slate-700 rounded w-full"
+                placeholder='Email'
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+            />
+        </label>
+
+        <label className="w-full mt-4">
+            <input
+                className="border p-2 border-slate-700 rounded w-full"
+                placeholder='Telefonnummer'
+                type="text"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+        </label>
+
+        <h2 className="mt-4 text-3xl text-center">Betalning</h2>
+        <label className="w-full">
+          <input 
+            className="border p-2 border-slate-700 rounded w-full mt-12"
+            placeholder='Kortnummer'
+            type="text" />
+        </label>
+
+        <div className="flex gap-2 w-full">
+        <label className="w-full mt-4">
+          <input 
+            className="border p-2 border-slate-700 rounded w-full"
+            placeholder='Datum'
+            type="text" />
+        </label>
+
+        <label className="w-full mt-4">
+          <input 
+            className="border p-2 border-slate-700 rounded w-full"
+            placeholder='CVV'
+            type="text" />
+        </label>
+        </div>
+
+        
+
+        <button type="submit" className="bg-btn text-white w-full sm:w-2/4 p-4 mt-4 rounded-md">Reservera och betala</button>
+    </form>
+</div>
         </>
     );
 };

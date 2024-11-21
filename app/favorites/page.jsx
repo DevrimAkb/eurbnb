@@ -50,7 +50,7 @@ const Favorites = () => {
       <>
       <Navbar />
         <div>
-            <h1>Favoriter</h1>
+            <h1 className="text-center font-bold text-2xl mb-10 mt-10">Favoriter</h1>
             <div style={gridStyles}>
                 {favorites.map((listing) => (
                     <ListingCard

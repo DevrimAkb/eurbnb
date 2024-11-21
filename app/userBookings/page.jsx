@@ -5,6 +5,7 @@ import { useAuth } from '../hooks/useAuth';
 import { db } from '@/firebase/firebaseConfig';
 import { doc, getDoc } from 'firebase/firestore';
 import Navbar from '../components/navbar';
+import { differenceInDays } from 'date-fns';
 
 const UserBookings = () => {
     const { user } = useAuth();
@@ -75,28 +76,35 @@ const UserBookings = () => {
                                   className="w-1/3 h-auto object-cover mr-4"
                               />
                               <div className="flex-1 text-sm">
+                                <div className="flex justify-between">
+
                                   <h3 className="font-bold">{listings[booking.listingId].title}</h3>
+                                  <p>{booking.numberOfGuests} Gäster</p>
+                                </div>
                                   <p>Sovrum: {listings[booking.listingId].bedrooms} Sängar: {listings[booking.listingId].beds}</p>
                                   <p className="font-bold">Datum</p>
                                   <div className="flex justify-between">
                                       <p>{booking.startDate} - {booking.endDate}</p>
-                                      <p>{booking.numberOfGuests} Gäster</p>
+                                      
                                   </div>
                                   <div className="flex justify-between mt-2">
                                       <p>Städavgift:</p>
-                                      <p>{listings[booking.listingId].cleaningFee} kr</p>
+                                      <p>500 kr</p>
                                   </div>
                                   <div className="flex justify-between">
                                       <p>eurbnb service avgift:</p>
-                                      <p>{listings[booking.listingId].serviceFee} kr</p>
+                                      <p>762 kr</p>
                                   </div>
                                   <div className="flex justify-between mt-2">
-                                      <p>Antal dagar:</p>
-                                      <p>{listings[booking.listingId].numberOfDays} dagar</p>
-                                  </div>
-                                  <div className="flex justify-between mt-2 font-bold">
-                                      <p>Totalt :</p>
-                                      <p>{listings[booking.listingId].totalPrice} kr</p>
+                                    <p>
+                                      {listings[booking.listingId] && booking.startDate && booking.endDate ? (
+                                        <>
+                                            {listings[booking.listingId].price} kr x {differenceInDays(new Date(booking.endDate), new Date(booking.startDate))} Nätter inklusive avgifter {listings[booking.listingId].price * differenceInDays(new Date(booking.endDate), new Date(booking.startDate))} kr
+                                        </>
+                                      ) : (
+                                        'Loading...'
+                                    )}
+                                    </p>
                                   </div>
                               </div>
                           </>

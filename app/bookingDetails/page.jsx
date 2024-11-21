@@ -99,7 +99,7 @@ const BookingDetails = () => {
       <>
       <Navbar />
 
-      <div className="booking-details">
+      <div className="booking-details w-full">
     <h1 className="text-3xl text-center mt-12 mb-20">Skicka bokingsförfrågan</h1>
 
     {listing && (
@@ -132,7 +132,7 @@ const BookingDetails = () => {
             </div>
         </div>
     )}
-    <form action="" className="flex flex-col justify-center items-center border-4 w-full sm:w-4/5 md:w-2/5 mx-auto p-4" onSubmit={handleBooking}>
+    <form action="" className="flex flex-col justify-center items-center w-full sm:w-4/5 md:w-2/5 mx-auto p-4" onSubmit={handleBooking}>
         <h2 className="mt-4 text-3xl text-center mb-5">Dina uppgifter</h2>
         <div className="flex flex-col sm:flex-row w-full space-y-4 sm:space-y-0 sm:space-x-4">
             <label className="flex-1">

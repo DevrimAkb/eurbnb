@@ -79,14 +79,14 @@ const BookCard = ({ listingId }) => {
             </label>
             <div className="flex flex-col justify-center items-center">
 
-            <p>{numberOfDays > 0 ? `${numberOfDays} Dygn` : 'Please select valid dates'}</p>
+            <p>{numberOfDays > 0 ? `${numberOfDays} Dygn` : ''}</p>
             <p>{listing ? `${listing.price} kr Per natt` : 'Loading price...'}</p>
             <input
                     type="text"
                     className="w-full p-2 border border-slate-400 rounded-md"
                     placeholder="Rabbattkod"
                 />
-            <p className="font-bold">{totalPrice > 0 ? `Totalt: ${totalPrice} kr` : 'Loading price...'}</p>
+            <p className="font-bold">{totalPrice > 0 ? `Totalt: ${totalPrice} kr` : '0'}</p>
             <p>Inklusive skatter och avgifter</p>
                 <button
                     className="bg-btn text-white p-2 rounded w-4/5 mt-4"

@@ -12,15 +12,31 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [errors, setErrors] = useState({});
+
+    const validateForm = () => {
+      const newErrors = {};
+      if (firstName.length < 2) newErrors.name = "Name must be at least 2 characters.";
+      if (lastName.length < 2) newErrors.subject = "Lastname must be at least 2 characters.";
+      if (email.length < 2) newErrors.message = "Email must be at least 2 characters.";
+      if (password.length < 2) newErrors.message = "Password must be at least 2 characters.";
+      return newErrors;
+    };
+
 
     const handleSignup = async (e) => {
         e.preventDefault();
+
+        const newErrors = validateForm();
+        if (Object.keys(newErrors).length > 0) {
+          setErrors(newErrors);
+          return;
+        }
+
+
         try {
-            // Create user in Firebase Authentication
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             const user = userCredential.user;
-
-            // Save user data in Firestore, using UID as document ID
             await setDoc(doc(db, 'users', user.uid), {
                 firstName: firstName,
                 lastName: lastName,
@@ -48,7 +64,7 @@ const Signup = () => {
                 onChange={(e) => setFirstName(e.target.value)}
                 required
             />
-            <input
+              <input
                 className="p-2 w-72"
                 type="text"
                 placeholder="Efternamn"
@@ -72,6 +88,7 @@ const Signup = () => {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
+
             <button className="bg-btn p-2 rounded text-white text-lg" type="submit">Registrera</button>
         </form>
         <div>

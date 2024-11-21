@@ -51,7 +51,7 @@ const SearchResults = () => {
                         title={listing.title}
                         price={listing.price}
                         location={listing.location}
-                        imageUrl={listing.images && listing.images[0]} // Show the first image
+                        imageUrl={listing.images && listing.images[0]} 
                         bedrooms={listing.bedrooms}
                         beds={listing.beds}
                         rating={listing.rating}

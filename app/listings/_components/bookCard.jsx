@@ -80,7 +80,7 @@ const BookCard = ({ listingId }) => {
             <div className="flex flex-col justify-center items-center">
 
             <p>{numberOfDays > 0 ? `${numberOfDays} Dygn` : ''}</p>
-            <p>{listing ? `${listing.price} kr Per natt` : 'Loading price...'}</p>
+            <p>{listing ? `${listing.price} kr Per natt` : ''}</p>
             <input
                     type="text"
                     className="w-full p-2 border border-slate-400 rounded-md"

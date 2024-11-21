@@ -60,32 +60,7 @@ const ListingDetails = () => {
         </div>
     </div>
 </div>
-      {/* <div className="flex justify-center">
-    <div className="flex flex-col relative top-20 w-full sm:w-4/5 md:w-3/5 px-4 sm:px-0">
-        <div className="flex flex-col sm:flex-row justify-between items-center">
-            <h1 className="text-4xl mb-2">{listing.title}</h1>
-            <p className="mt-2 sm:mt-0"><i className="fa-solid fa-star text-sm"></i> {listing.rating}</p>
-        </div>
-
-        <div className="mt-4">
-            <img src={listing.images[0]} className="h-72 w-full object-cover" />
-        </div>
-
-        <div className="mt-4">
-            <p className="font-bold">Din värd: {listing.host}</p>
-            <div className="flex gap-2 mt-2">
-                <p>{listing.bedrooms} Bedrooms</p>
-                <span className="text-2xl">&middot;</span>
-                <p>{listing.beds} Beds</p>
-            </div>
-        </div>
-
-        <div className="flex flex-col sm:flex-row mt-12 sm:mt-24 justify-between">
-            <p className="w-full sm:w-4/6">{listing.description}</p>
-            <BookCard listingId={id} className="mt-4 sm:mt-0" />
-        </div>
-    </div>
-</div> */}
+     
         </>
     );
 };
